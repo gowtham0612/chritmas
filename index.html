@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowstorm/20131208/snowstorm-min.js"></script>
-
+    
     <title>Infisign</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowstorm/20131208/snowstorm-min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowfall/1.5.0/snowfall.min.js"></script> -->
     <style>
       /* Add your CSS styles here */
       * {
@@ -541,18 +542,46 @@
         $(document).ready(function () {
           var $clickMe = $(".click-icon"),
             $card = $(".card");
-
+    
           $card.on("click", function () {
+            var isCardOpened = $(this).hasClass("is-opened");
+    
             $(this).toggleClass("is-opened");
             $clickMe.toggleClass("is-hidden");
-            playAudio();
+            if (isCardOpened) {
+              pauseAudio();
+              stopSnowstorm();
+            } else {
+              playAudio();
+              startSnowstorm();
+            }
           });
+    
+          function playAudio() {
+            var audio = document.getElementById('jingleBellAudio');
+            audio.play();
+          }
+
+          function pauseAudio() {
+            var audio = document.getElementById('jingleBellAudio');
+            audio.pause();
+            audio.currentTime = 0; 
+          }
         });
-        function playAudio() {
-    var audio = document.getElementById('jingleBellAudio');
-    audio.play();
-  }
+        function startSnowstorm() {
+        if (typeof snowStorm !== 'undefined') {
+          snowStorm.toggleSnow();
+        }
+      }
+
+      // Function to stop snowstorm
+      function stopSnowstorm() {
+        if (typeof snowStorm !== 'undefined') {
+          snowStorm.stop();
+        }
+      }
       </script>
+    
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowstorm/20131208/snowstorm-min.js"></script> -->
   </body>
 </html>
