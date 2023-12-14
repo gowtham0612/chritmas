@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <title>Infisign</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowstorm/20131208/snowstorm-min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowfall/1.5.0/snowfall.min.js"></script> -->
@@ -293,6 +293,19 @@
           font-size: 15px;
         }
       }
+    
+    
+      p {
+  font-family: 'Mirza', Verdana, Arial, serif;
+  padding-left: 10px;
+  color: #ff3366; 
+  transition: color 0.5s ease-in-out;
+}
+
+p:hover {
+  color: #00cc99; /* Change the hover color to your preferred one */
+}
+
     </style>
     <link
       rel="stylesheet"
@@ -515,7 +528,7 @@
           </svg>
           <br />
           <br />
-          "Merry Christmas & Happy New Year 2024"
+          "Merry Christmas <span style="color: #ff3366;">🎅</span> & Happy New Year 2024"
         </p>
       </div>
       <div class="click-icon">
@@ -539,49 +552,49 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        $(document).ready(function () {
-          var $clickMe = $(".click-icon"),
-            $card = $(".card");
-    
-          $card.on("click", function () {
-            var isCardOpened = $(this).hasClass("is-opened");
-    
-            $(this).toggleClass("is-opened");
-            $clickMe.toggleClass("is-hidden");
-            if (isCardOpened) {
-              pauseAudio();
-              stopSnowstorm();
-            } else {
-              playAudio();
-              startSnowstorm();
-            }
-          });
-    
-          function playAudio() {
-            var audio = document.getElementById('jingleBellAudio');
-            audio.play();
-          }
+      $(document).ready(function () {
+        var $clickMe = $(".click-icon"),
+          $card = $(".card");
 
-          function pauseAudio() {
-            var audio = document.getElementById('jingleBellAudio');
-            audio.pause();
-            audio.currentTime = 0; 
+        $card.on("click", function () {
+          var isCardOpened = $(this).hasClass("is-opened");
+
+          $(this).toggleClass("is-opened");
+          $clickMe.toggleClass("is-hidden");
+          if (isCardOpened) {
+            pauseAudio();
+            stopSnowstorm();
+          } else {
+            playAudio();
+            startSnowstorm();
           }
         });
-        function startSnowstorm() {
-        if (typeof snowStorm !== 'undefined') {
+
+        function playAudio() {
+          var audio = document.getElementById("jingleBellAudio");
+          audio.play();
+        }
+
+        function pauseAudio() {
+          var audio = document.getElementById("jingleBellAudio");
+          audio.pause();
+          audio.currentTime = 0;
+        }
+      });
+      function startSnowstorm() {
+        if (typeof snowStorm !== "undefined") {
           snowStorm.toggleSnow();
         }
       }
 
       // Function to stop snowstorm
       function stopSnowstorm() {
-        if (typeof snowStorm !== 'undefined') {
+        if (typeof snowStorm !== "undefined") {
           snowStorm.stop();
         }
       }
-      </script>
-    
+    </script>
+
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowstorm/20131208/snowstorm-min.js"></script> -->
   </body>
 </html>
