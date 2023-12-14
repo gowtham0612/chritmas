@@ -545,13 +545,14 @@
           $card.on("click", function () {
             $(this).toggleClass("is-opened");
             $clickMe.toggleClass("is-hidden");
+            playAudio();
           });
         });
-      document.addEventListener("DOMContentLoaded", function () {
-        var jingleBellAudio = document.getElementById("jingleBellAudio");
-        jingleBellAudio.play();
-      });
-    </script>
+        function playAudio() {
+    var audio = document.getElementById('jingleBellAudio');
+    audio.play();
+  }
+      </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowstorm/20131208/snowstorm-min.js"></script> -->
   </body>
 </html>
